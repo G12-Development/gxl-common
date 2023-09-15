@@ -110,7 +110,7 @@ PRODUCT_COPY_FILES +=  \
     frameworks/native/data/etc/android.software.vulkan.deqp.level-2021-03-01.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.software.vulkan.deqp.level.xml
 
 ## Platform
-TARGET_AMLOGIC_SOC ?= g12a
+TARGET_AMLOGIC_SOC ?= gxl
 
 ## Shipping API
 PRODUCT_SHIPPING_API_LEVEL := 29
@@ -131,4 +131,4 @@ PRODUCT_PACKAGES += \
 $(call inherit-product, device/amlogic/common/amlogic.mk)
 
 ## Inherit from the common proprietary files makefile
-$(call inherit-product, vendor/amlogic/g12-common/g12-common-vendor.mk)
+$(call inherit-product, vendor/amlogic/gxl-common/gxl-common-vendor.mk)
