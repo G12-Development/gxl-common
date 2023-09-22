@@ -16,6 +16,7 @@ system_ext/etc/permissions/privapp-permissions-google-se.xml
 # Audio
 vendor/lib/hw/audio.primary.amlogic.so
 vendor/lib/libamadec.so
+vendor/lib/libdtvad.so
 vendor/lib/libamaudioutils.so
 vendor/lib/libamlaudiorc.so
 vendor/lib/libdvbaudioutils.so
@@ -23,7 +24,9 @@ vendor/lib/libfaad.so
 vendor/lib/libmad.so
 vendor/lib/libms12api.so
 vendor/lib/libnano.so
-
+vendor/etc/init/android.hardware.audio.service-droidlogic.rc
+vendor/bin/hw/android.hardware.audio.service-droidlogic
+vendor/lib/vendor.amlogic.hardware.remotecontrol@1.0.so
 
 # Audio Effects
 vendor/etc/audio_effects.conf
@@ -94,6 +97,10 @@ vendor/lib/libamgralloc_ext.so
 
 # HDMI CEC
 vendor/lib/hw/hdmi_cec.amlogic.so
+vendor/lib/vendor.amlogic.hardware.hdmicec@1.0.so
+vendor/etc/init/hdmicecd.rc
+vendor/lib/libhdmicec.so
+vendor/bin/hdmicecd
 
 # Health
 vendor/bin/hw/android.hardware.health@2.0-service.droidlogic
@@ -111,10 +118,10 @@ vendor/etc/init/dvb.rc
 vendor/etc/init/fs.rc
 vendor/etc/init/irblaster1.rc
 vendor/etc/init/sysfs_permissions.rc
+vendor/etc/init/memory_common.rc
 
 # Keylayouts
 vendor/usr/keylayout/Generic.kl
-vendor/usr/keylayout/Vendor_0001_Product_0001.kl
 vendor/usr/keylayout/Vendor_2717_Product_3144.idc
 vendor/usr/keylayout/Vendor_2717_Product_3144.kcm
 vendor/usr/keylayout/Vendor_2717_Product_3144.kl
@@ -126,6 +133,11 @@ vendor/usr/keylayout/Vendor_2717_Product_32b8.kl
 vendor/usr/keylayout/Vendor_2717_Product_32b9.idc
 vendor/usr/keylayout/Vendor_2717_Product_32b9.kl
 vendor/usr/keylayout/Vendor_2717_Product_32ba.kl
+
+# Lights
+vendor/bin/hw/lights
+vendor/etc/init/lights.rc
+-vendor/etc/vintf/manifest/lights.xml
 
 # Media (Hardware)
 vendor/bin/DecInfo_test
@@ -154,6 +166,7 @@ vendor/lib/libOmxAudio.so
 vendor/lib/libOmxBase.so
 vendor/lib/libOmxCore.so
 vendor/lib/libOmxVideo.so
+vendor/lib/libOmxCoreSw.so
 vendor/lib/libdatachunkqueue_alt.so
 vendor/lib/libfpscalculator_alt.so
 vendor/lib/libomx_av_core_alt.so
@@ -163,6 +176,10 @@ vendor/lib/libomx_timed_task_queue_alt.so
 vendor/lib/libomx_worker_peer_alt.so
 vendor/lib/libstagefrighthw.so
 vendor/lib/libthreadworker_alt.so
+vendor/lib/libstagefright_soft_amsoftdec.so
+
+# Power
+vendor/lib/hw/power.amlogic.so
 
 # remotecfg
 vendor/bin/remotecfg
@@ -170,6 +187,24 @@ vendor/etc/remote.cfg
 vendor/etc/remote.tab1
 vendor/etc/remote.tab2
 vendor/etc/remote.tab3
+
+# subtitle
+-vendor/etc/vintf/manifest/vendor.amlogic.hardware.subtitleserver@1.0.xml
+vendor/bin/hw/subtitleserver
+vendor/lib/vendor.amlogic.hardware.subtitleserver@1.0.so
+vendor/etc/init/subtitleserver.rc
+system_ext/lib/libsubtitlemanager_jni.so:vendor/lib/libsubtitlemanager_jni.so
+system_ext/lib/libsubtitlemanager_jni.so
+
+# screecontrol
+-vendor/etc/vintf/manifest/vendor.amlogic.hardware.screencontrol@1.0.xml
+vendor/bin/screencatch
+vendor/bin/screencontrol
+vendor/lib/libscreencontrolclient.so
+vendor/lib/libscreencontrol_jni.so
+vendor/lib/libscreencontrolservice.so
+vendor/lib/vendor.amlogic.hardware.screencontrol@1.0.so
+vendor/etc/init/screencontrol.rc
 
 # screen_source
 vendor/lib/hw/screen_source.amlogic.so
@@ -193,11 +228,36 @@ vendor/bin/systemcontrol
 vendor/etc/init/systemcontrol.rc
 vendor/lib/libfbc.so
 vendor/lib/libpqcontrol.so
+vendor/lib/libtvbinder.so
 vendor/lib/libsystemcontrolservice.so
 vendor/lib/vendor.amlogic.hardware.droidvold@1.0.so
 vendor/lib/vendor.amlogic.hardware.systemcontrol@1.0.so
 vendor/lib/vendor.amlogic.hardware.systemcontrol@1.1.so
 vendor/lib/vendor.amlogic.hardware.tvserver@1.0.so
+vendor/lib/libprovision.so
+
+# TEE
+vendor/bin/tee_hdcp
+vendor/bin/tee_key_inject
+vendor/bin/tee_preload_fw
+vendor/bin/tee_provision
+vendor/bin/tee-supplicant
+vendor/etc/init/tee_hdcp.rc
+vendor/etc/init/tee_key_inject.rc
+vendor/etc/init/tee-supplicant.rc
+vendor/lib/libteec.so
+vendor/lib/libtee_load_video_fw.so
+
+# teetz
+vendor/lib/teetz/00d1ca22-1764-4e35-90aa-5b8c12630764.ta
+vendor/lib/teetz/2c1a33c0-44cc-11e5-bc3b-0002a5d5c51b.ta
+vendor/lib/teetz/526fc4fc-7ee6-4a12-96e3-83da9565bce8.ta
+vendor/lib/teetz/8efb1e1c-37e5-4326-a5d6-8c33726c7d57.ta
+vendor/lib/teetz/9a04f079-9840-4286-ab92-e65be0885f95.ta
+vendor/lib/teetz/e043cde0-61d0-11e5-9c26-0002a5d5c51b.ta
+vendor/lib/teetz/e043cde0-61d0-11e5-9c260002a5d5c5ca.ta
+vendor/lib/teetz/e92a43ab-b4c8-4450-aa12-b1516259613b.ta
+vendor/lib/teetz/ff2a4bea-ef6d-11e6-89cc-d4ae52a7b3b3.ta
 
 # Thermal
 -vendor/etc/vintf/manifest/android.hardware.thermal@2.0-service.droidlogic.xml
